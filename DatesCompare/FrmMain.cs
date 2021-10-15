@@ -27,7 +27,7 @@ namespace DatesCompare
 
         private void dtpInicio_ValueChanged(object sender, EventArgs e)
         {
-            this.dtpFim.MinDate = this.dtpInicio.Value.AddDays(7);
+            dtpFim.MinDate = dtpInicio.Value.AddDays(7);
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
@@ -40,7 +40,7 @@ namespace DatesCompare
 
                     ResetDatas();
 
-                    //MessageBox.Show("Sucesso ao incluir o agendamento", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);                   
+                    MessageBox.Show("Sucesso ao incluir o agendamento", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);                   
                 }                    
                 else
                 {
@@ -76,7 +76,7 @@ namespace DatesCompare
                         MessageBox.Show("Já existe um agendamento ativo ou agendado para as datas informadas", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
                     //Final
-                    //ResetDatas();
+                    ResetDatas();
                 }                
             }
             else
@@ -92,8 +92,9 @@ namespace DatesCompare
 
         private void ResetDatas()
         {
-            this.dtpInicio.Value = DateTime.Now.AddDays(5);
-            this.dtpFim.Value = dtpInicio.Value.AddDays(7);
+            dtpInicio.MinDate = DateTime.Now.AddDays(5);
+            dtpInicio.Value = DateTime.Now.AddDays(5);
+            dtpFim.Value = dtpInicio.Value.AddDays(7);
         }
     }
 }
